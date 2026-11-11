@@ -1,0 +1,11 @@
+node_modules/
+.pnpm-store/
+dist/
+release/
+.keys/
+*.pem
+coverage/
+.worktrees/
+.codex/
+.claude/
+.DS_Store

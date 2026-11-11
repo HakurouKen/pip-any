@@ -1,0 +1,17 @@
+{
+  "singleQuote": true,
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 100,
+  "trailingComma": "all",
+  "ignorePatterns": [
+    "dist/**",
+    "release/**",
+    ".keys/**",
+    "node_modules/**",
+    ".pnpm-store/**",
+    ".codex/**",
+    ".claude/**",
+    "pnpm-lock.yaml"
+  ]
+}

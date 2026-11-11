@@ -1,0 +1,23 @@
+<div class="picker" data-ui="picker" hidden></div>
+<div class="outline" data-ui="outline" hidden></div>
+<section class="panel" data-ui="panel" aria-label="Pip Any 元素选择" hidden>
+  <div class="heading">
+    <strong>Pip Any</strong>
+    <button type="button" data-ui="cancel">取消 Esc</button>
+  </div>
+  <div class="hint" data-ui="hint">点击选择对应内容。</div>
+  <div class="target" data-ui="target"></div>
+  <div class="restriction" data-ui="restriction" role="status" hidden>
+    不支持 iframe 及包含它的区域，请缩小或重选。
+  </div>
+  <div class="adjustments" data-ui="adjustments" hidden>
+    <div class="range-labels"><span>缩小</span><span>扩大</span></div>
+    <input type="range" data-ui="slider" min="0" max="0" step="1" value="0" aria-label="选区范围" />
+    <div class="actions">
+      <button type="button" data-ui="reselect">重新选择</button>
+      <button type="button" class="confirm" data-ui="confirm">确定</button>
+    </div>
+  </div>
+  <div class="status" data-ui="status" role="status" aria-live="polite"></div>
+</section>
+<div class="toast" data-ui="toast" role="status" aria-live="polite" hidden></div>

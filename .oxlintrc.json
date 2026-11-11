@@ -1,0 +1,14 @@
+{
+  "categories": { "correctness": "error", "perf": "warn" },
+  "plugins": ["import"],
+  "rules": { "no-debugger": "error", "import/no-cycle": "error" },
+  "ignorePatterns": [
+    "dist/**",
+    "release/**",
+    ".keys/**",
+    "node_modules/**",
+    ".pnpm-store/**",
+    ".codex/**",
+    ".claude/**"
+  ]
+}

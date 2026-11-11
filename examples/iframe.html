@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>iframe 状态测试</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 20px;
+        font:
+          14px/1.7 system-ui,
+          sans-serif;
+        color: #172c3a;
+        background: #e7f4f2;
+      }
+      button,
+      input {
+        padding: 8px 12px;
+        font: inherit;
+        border: 1px solid #9bbeb8;
+        border-radius: 6px;
+      }
+      p {
+        margin: 0 0 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <p>本次加载标识：<strong id="session"></strong> · 已运行 <span id="seconds">0</span> 秒</p>
+    <p><button id="counter" type="button">内部计数：0</button></p>
+    <input aria-label="iframe 内部笔记" placeholder="选择模式不能操作此输入框" />
+    <script>
+      document.getElementById('session').textContent = crypto.randomUUID().slice(0, 8);
+      const started = Date.now();
+      setInterval(() => {
+        document.getElementById('seconds').textContent = String(
+          Math.floor((Date.now() - started) / 1000),
+        );
+      }, 1000);
+      let count = 0;
+      document.getElementById('counter').addEventListener('click', (event) => {
+        count++;
+        event.currentTarget.textContent = `内部计数：${count}`;
+      });
+    </script>
+  </body>
+</html>

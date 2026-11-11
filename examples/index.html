@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pip Any · 交互测试页</title>
+    <style>
+      :root {
+        font-family: system-ui, sans-serif;
+        color: #172c3a;
+        background: #f3f6f7;
+      }
+      body {
+        max-width: 1000px;
+        margin: 64px auto;
+        padding: 0 24px;
+      }
+      h1 {
+        font-size: 40px;
+        letter-spacing: -1.5px;
+        margin: 0 0 12px;
+      }
+      header p {
+        color: #526874;
+        line-height: 1.8;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        margin-top: 32px;
+      }
+      .card {
+        box-sizing: border-box;
+        background: white;
+        border: 1px solid #d9e3e5;
+        border-radius: 20px;
+        padding: 28px;
+      }
+      h2 {
+        margin: 0 0 16px;
+        font-size: 20px;
+      }
+      p {
+        line-height: 1.8;
+      }
+      button {
+        background: #0f766e;
+        border: 0;
+        color: white;
+        font: inherit;
+        border-radius: 8px;
+        padding: 10px 18px;
+        cursor: pointer;
+      }
+      input {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #b6c8cc;
+        border-radius: 8px;
+        font: inherit;
+      }
+      output {
+        display: block;
+        font-size: 48px;
+        font-weight: 650;
+        margin: 12px 0;
+        color: #0f766e;
+      }
+      a {
+        color: #0f766e;
+      }
+      .wide {
+        grid-column: 1 / -1;
+      }
+      @media (max-width: 700px) {
+        .grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <p>PIP ANY / 测试页面</p>
+      <h1>让网页的一部分，留在眼前。</h1>
+      <p>
+        点击插件图标，在面板中点击「选择内容」，再单击锁定选区。用滑块或四个方向键调整范围后打开浮窗。
+      </p>
+    </header>
+    <main class="grid">
+      <section class="card" id="counter-card">
+        <h2>交互计数器</h2>
+        <p>选择整个卡片，在浮窗内点击按钮，确认节点与状态保留。</p>
+        <output id="count">0</output>
+        <button id="increment" type="button">增加计数</button>
+      </section>
+      <section class="card" id="notes-card">
+        <h2>临时笔记</h2>
+        <p>先输入内容，再把卡片移入浮窗，关闭后输入内容应仍在。</p>
+        <input aria-label="临时笔记" placeholder="写下一条笔记…" />
+      </section>
+      <section class="card wide" id="links-card">
+        <h2>选择拦截与容器恢复</h2>
+        <p><a href="#destination" id="sample-link">选择模式中点击此链接，不应触发跳转。</a></p>
+        <p>可在开发者工具中删除原容器，再关闭浮窗，检查元素是否回到页面底部并出现提示。</p>
+      </section>
+      <section class="card wide" id="iframe-card">
+        <h2>iframe 禁选区域</h2>
+        <p>
+          悬停内嵌页面或整张卡片时应显示红色斜纹禁选提示，单击不能锁定。选择这里的普通文字后，也可用方向键扩大到卡片，检查打开按钮被禁用。
+        </p>
+        <p>iframe 加载次数：<span id="frame-loads">0</span></p>
+        <iframe
+          id="embedded-test-frame"
+          title="iframe 状态保留测试"
+          style="width: 100%; height: 260px; border: 1px solid #b6c8cc; border-radius: 8px"
+        ></iframe>
+      </section>
+    </main>
+    <script>
+      let count = 0;
+      const output = document.getElementById('count');
+      document.getElementById('increment').addEventListener('click', () => {
+        count++;
+        output.textContent = String(count);
+      });
+      let frameLoads = 0;
+      const frame = document.getElementById('embedded-test-frame');
+      frame.addEventListener('load', () => {
+        frameLoads++;
+        document.getElementById('frame-loads').textContent = String(frameLoads);
+      });
+      frame.src = 'iframe.html';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Pip Any · 元素画中画",
+  "version": "0.2.2",
+  "description": "点击工具栏图标，选择网页元素并放入置顶画中画浮窗。",
+  "minimum_chrome_version": "116",
+  "permissions": ["activeTab", "scripting"],
+  "action": {
+    "default_title": "Pip Any · 元素画中画",
+    "default_popup": "popup.html"
+  }
+}
